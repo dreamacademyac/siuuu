@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10090c">
+<meta name="description" content="BOYZ SCHOOL SMP — community kills and wealth leaderboard. Java and Bedrock crossplay.">
+<title>BOYZ SCHOOL SMP — Leaderboards</title>
+<style>
+:root{color-scheme:dark;--bg:#0b090b;--panel:#151014;--panel2:#1e151b;--line:#36212a;--red:#f04455;--red2:#a8182d;--gold:#f6c85f;--text:#f7f1f3;--muted:#a99ba2;--green:#8bd9aa}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 50% -18%,#43121f 0%,transparent 42%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}
+a{color:inherit;text-decoration:none}button,input{font:inherit}.wrap{width:min(1120px,calc(100% - 32px));margin:auto}
+header{border-bottom:1px solid #ffffff13;background:#0b090bd9;backdrop-filter:blur(12px);position:sticky;top:0;z-index:10}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:.04em}.mark{width:43px;height:43px;border-radius:13px;background:linear-gradient(135deg,#ff4659,#8e1025);display:grid;place-items:center;box-shadow:0 6px 28px #f044552b;border:1px solid #ff86933d}.mark svg{width:29px;height:29px}.brand-name{font-size:14px;line-height:1.25}.brand-name span{display:block;font-size:10px;color:#ff7180;letter-spacing:.2em;margin-top:4px}
+.navlinks{display:flex;gap:22px;color:var(--muted);font-size:13px}.navlinks a:hover{color:white}.nav-join{border:1px solid #f0445566;background:#f0445514;color:#ff8791;padding:10px 15px;border-radius:10px;font-size:12px;font-weight:800;letter-spacing:.04em}
+.hero{padding:62px 0 32px;display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:28px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#ff8791;border:1px solid #f0445544;background:#f0445510;border-radius:999px;padding:7px 11px;font-size:10px;letter-spacing:.17em;font-weight:900}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px #f6c85f88}
+h1{font-size:clamp(35px,6vw,65px);line-height:.98;letter-spacing:-.055em;margin:20px 0 16px;font-weight:950;max-width:720px}h1 em{font-style:normal;color:var(--red);text-shadow:0 0 28px #f0445525}
+.lead{color:#c2b4ba;line-height:1.75;font-size:14px;max-width:570px;margin:0}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}.btn{border:0;border-radius:11px;padding:12px 16px;font-weight:850;font-size:12px;cursor:pointer;transition:transform .15s,filter .15s}.btn:hover{transform:translateY(-1px);filter:brightness(1.1)}.btn-primary{background:linear-gradient(130deg,#fa4d5e,#bc2039);color:white;box-shadow:0 8px 25px #f0445528}.btn-secondary{background:#ffffff08;color:#efe5e9;border:1px solid #ffffff18}
+.hero-card{border:1px solid var(--line);background:linear-gradient(145deg,#1e151b,#100d10);padding:22px;border-radius:20px;position:relative;overflow:hidden}.hero-card:before{content:"Z";position:absolute;right:-10px;top:-35px;color:#ffffff05;font-weight:1000;font-size:185px;line-height:1}.mini-title{color:var(--muted);font-size:10px;letter-spacing:.18em;font-weight:900}.hero-number{font-size:34px;font-weight:950;letter-spacing:-.04em;margin:13px 0 5px}.hero-sub{color:var(--muted);font-size:12px;line-height:1.6}.feature-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:19px}.pill{border:1px solid #ffffff14;border-radius:8px;padding:7px 9px;font-size:10px;font-weight:800;color:#d9cbd1;background:#ffffff06}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin:26px 0 16px}.section-kicker{font-size:10px;font-weight:900;letter-spacing:.2em;color:#ff7481}.section-head h2{margin:6px 0 0;font-size:24px;letter-spacing:-.035em}.section-note{font-size:11px;color:var(--muted);line-height:1.6;text-align:right;max-width:260px}
+.board{border:1px solid var(--line);border-radius:18px;background:#120e12;overflow:hidden;box-shadow:0 18px 70px #0003}
+.board-top{padding:18px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid #ffffff0e;background:linear-gradient(110deg,#201319,#130f13)}
+.tabs{display:flex;background:#0c090c;border:1px solid #ffffff13;border-radius:11px;padding:4px;gap:4px}.tab{border:0;color:#a99ba2;background:transparent;cursor:pointer;border-radius:8px;padding:10px 14px;font-size:11px;font-weight:900}.tab[aria-selected="true"]{background:var(--red);color:white;box-shadow:0 4px 15px #f0445533}
+.search{width:min(100%,235px);display:flex;gap:8px;align-items:center;border:1px solid #ffffff16;border-radius:10px;padding:0 11px;background:#0c090c;color:var(--muted)}.search input{width:100%;min-width:0;background:none;border:0;outline:0;color:white;padding:11px 0;font-size:12px}.search input::placeholder{color:#81737a}
+.demo-banner{display:flex;align-items:center;gap:10px;padding:12px 18px;background:#392713;border-bottom:1px solid #75501e;color:#ffdb9b;font-size:11px;line-height:1.55}.demo-banner strong{letter-spacing:.05em}
+.podium{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:18px 18px 4px}.podium-card{border:1px solid #ffffff10;background:linear-gradient(180deg,#21171d,#151014);border-radius:13px;padding:17px 12px;text-align:center;min-width:0}.podium-card.first{border-color:#9a753a;background:linear-gradient(180deg,#342719,#171115);transform:translateY(-5px)}.medal{font-size:22px}.podium-name{font-weight:900;font-size:13px;overflow-wrap:anywhere;margin:8px 0 4px}.podium-value{font-size:19px;font-weight:950;color:#ff7481}.first .podium-value{color:var(--gold)}.podium-rank{font-size:9px;color:var(--muted);letter-spacing:.12em;margin-top:6px}
+.table-wrap{padding:14px 18px 18px;overflow-x:auto}table{width:100%;border-collapse:collapse;text-align:left;white-space:nowrap}thead th{font-size:9px;color:#867780;text-transform:uppercase;letter-spacing:.15em;font-weight:900;padding:12px 10px;border-bottom:1px solid #ffffff12}tbody td{padding:14px 10px;border-bottom:1px solid #ffffff09;font-size:12px}tbody tr:last-child td{border-bottom:0}tbody tr:hover{background:#ffffff04}.rank{color:#9f9098;font-weight:900;width:48px}.player{display:flex;align-items:center;gap:10px;font-weight:800}.avatar{width:31px;height:31px;border-radius:9px;display:grid;place-items:center;background:#38202a;color:#ff9aa4;font-weight:950;font-size:11px;border:1px solid #f0445533}.value{font-weight:900;font-variant-numeric:tabular-nums}.positive{color:#a7e3b9}.coin{color:var(--gold)}.empty{padding:26px;text-align:center;color:var(--muted);font-size:12px;display:none}
+.below{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0 55px}.info-card{border:1px solid var(--line);background:linear-gradient(145deg,#181117,#110d10);border-radius:16px;padding:20px}.info-heading{display:flex;align-items:center;gap:10px;font-weight:900;font-size:14px}.icon-box{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:#f0445518;color:#ff7b87}.info-card p{font-size:12px;color:var(--muted);line-height:1.7;margin:12px 0 15px}.server-line{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #ffffff12;background:#0b090b;border-radius:10px;padding:11px 12px;margin-top:8px}.server-label{font-size:9px;letter-spacing:.13em;color:#94848d;margin-bottom:4px}.server-address{font-size:12px;font-weight:850;overflow-wrap:anywhere}.copy{background:#ffffff0b;border:1px solid #ffffff15;color:#e9dfe4;border-radius:8px;padding:7px 9px;cursor:pointer;font-size:10px;font-weight:900;flex-shrink:0}.copy:hover{border-color:#f04455;color:#ff8791}
+footer{border-top:1px solid #ffffff10;padding:22px 0 30px;color:#776871;font-size:10px}.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}.foot strong{color:#b7a7af}
+.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,16px);opacity:0;pointer-events:none;transition:.2s;background:#f3edf0;color:#170d11;padding:11px 16px;border-radius:10px;font-size:12px;font-weight:900;z-index:30}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:760px){.nav{height:66px}.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:42px;gap:20px}.hero-card{max-width:none}.section-head{align-items:start;flex-direction:column}.section-note{text-align:left}.board-top{align-items:stretch;flex-direction:column}.tabs{width:100%}.tab{flex:1}.search{width:100%}.podium{gap:7px;padding:13px 10px 2px}.podium-card{padding:13px 7px}.podium-name{font-size:11px}.podium-value{font-size:15px}.table-wrap{padding:10px}.below{grid-template-columns:1fr;margin-bottom:36px}.nav-join{padding:9px 11px}.brand-name{font-size:12px}}
+@media(max-width:430px){.wrap{width:calc(100% - 22px)}.mark{width:37px;height:37px}.brand{gap:8px}.nav-join{font-size:10px}h1{font-size:39px}.hero{padding-top:34px}.podium-card{border-radius:10px}.podium-name{font-size:10px}.podium-value{font-size:14px}.medal{font-size:18px}.demo-banner{align-items:flex-start}.server-address{font-size:11px}}
+</style>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="brand" href="#" aria-label="BOYZ SCHOOL SMP Home">
+<span class="mark"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M5 7l6 3 5-6 5 6 6-3-3 9-8 3-8-3L5 7Z" fill="#fff"/><path d="M8 19h16l-2 5H10l-2-5Z" fill="#fff"/><path d="M11 13l5 3 5-3" stroke="#b71931" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+<span class="brand-name">BOYZ SCHOOL SMP<span>NO MERCY • COMMUNITY</span></span>
+</a>
+<nav class="navlinks" aria-label="Main navigation"><a href="#leaderboard">Leaderboards</a><a href="#join">How to Join</a></nav>
+<a class="nav-join" href="#leaderboard">VIEW RANKS ↗</a>
+</div></header>
+<main class="wrap">
+<section class="hero">
+<div>
+<div class="eyebrow"><span class="dot"></span> JAVA + BEDROCK CROSSPLAY</div>
+<h1>PROVE YOUR<br><em>DOMINANCE.</em></h1>
+<p class="lead">The BOYZ SCHOOL SMP rankings. Track the players climbing the kill count and stacking the wealth. Earn your name at the top — no mercy.</p>
+<div class="hero-actions"><a class="btn btn-primary" href="#leaderboard">CHECK LEADERBOARD ↓</a><a class="btn btn-secondary" href="#join">JOIN THE SMP ↗</a></div>
+</div>
+<aside class="hero-card">
+<div class="mini-title">THE GRIND NEVER STOPS</div>
+<div class="hero-number">KILLS. <span style="color:var(--red)">WEALTH.</span></div>
+<div class="hero-sub">Two rankings. One server. Your stats belong here when the live server connection is configured.</div>
+<div class="feature-row"><span class="pill">⚔ KILLS</span><span class="pill">◆ WEALTH</span><span class="pill">◇ CROSSPLAY</span></div>
+</aside>
+</section>
+<section id="leaderboard">
+<div class="section-head"><div><div class="section-kicker">THE HALL OF FAME</div><h2>Leaderboard</h2></div><div class="section-note">Switch rankings or search for a player.<br>Live sync is not connected yet.</div></div>
+<div class="board">
+<div class="board-top">
+<div class="tabs" role="tablist" aria-label="Leaderboard type"><button class="tab" id="killsTab" role="tab" aria-selected="true" aria-controls="leaderTable">⚔ KILLS</button><button class="tab" id="wealthTab" role="tab" aria-selected="false" aria-controls="leaderTable">◆ WEALTH</button></div>
+<label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search player..." autocomplete="off" aria-label="Search player"></label>
+</div>
+<div class="demo-banner" id="demoBanner"><span aria-hidden="true">⚠</span><span><strong>DEMO DATA — NOT LIVE.</strong> These sample rankings are placeholders. Real player stats will appear after a server-side sync is set up.</span></div>
+<div class="podium" id="podium" aria-label="Top three players"></div>
+<div class="table-wrap"><table id="leaderTable"><thead><tr><th>Rank</th><th>Player</th><th id="metricHeader">Kills</th><th>Status</th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">No players match that search.</div></div>
+</div>
+</section>
+<section class="below" id="join">
+<div class="info-card"><div class="info-heading"><span class="icon-box">⌘</span>Join the server</div><p>BOYZ SCHOOL SMP supports Java and Bedrock players. Copy the details below into your Minecraft multiplayer menu.</p>
+<div class="server-line"><div><div class="server-label">JAVA EDITION</div><div class="server-address">boyzsmp.pixelforge.gg:26094</div></div><button class="copy" data-copy="boyzsmp.pixelforge.gg:26094">COPY</button></div>
+<div class="server-line"><div><div class="server-label">BEDROCK EDITION</div><div class="server-address">15.235.165.81</div><div class="server-label" style="margin-top:4px">PORT: 26095</div></div><button class="copy" data-copy="15.235.165.81">COPY IP</button></div>
+<div class="server-line"><div><div class="server-label">BEDROCK PORT</div><div class="server-address">26095</div></div><button class="copy" data-copy="26095">COPY</button></div>
+</div>
+<div class="info-card"><div class="info-heading"><span class="icon-box">↗</span>About the rankings</div><p><strong style="color:#f6eaf0">Built for BOYZ SCHOOL SMP.</strong> This page is ready for a real stats feed, but a static website cannot read the Minecraft server by itself. A Paper plugin or secure server-side API must publish verified kill and economy data first.</p><p style="margin-bottom:0">No fake online count, no invented live stats. This demo remains clearly labelled until the integration is working.</p></div>
+</section>
+</main>
+<footer><div class="wrap foot"><span><strong>BOYZ SCHOOL SMP</strong> · Made by ZAHIN</span><span>Unofficial community leaderboard · Demo mode until server sync is connected</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite">Copied!</div>
+<script>
+(function(){
+var demoPlayers=[
+ {name:"ShadowZ",kills:248,wealth:925000,status:"DEMO"},
+ {name:"SiuuuKing",kills:219,wealth:812400,status:"DEMO"},
+ {name:"VoidHunter",kills:186,wealth:760000,status:"DEMO"},
+ {name:"CrimsonPvP",kills:171,wealth:624500,status:"DEMO"},
+ {name:"NightReaper",kills:159,wealth:590000,status:"DEMO"},
+ {name:"BlockPhantom",kills:142,wealth:482200,status:"DEMO"},
+ {name:"AstraBlaze",kills:127,wealth:410000,status:"DEMO"},
+ {name:"FluxRunner",kills:103,wealth:338800,status:"DEMO"},
+ {name:"ZedStorm",kills:91,wealth:245000,status:"DEMO"},
+ {name:"PixelRogue",kills:76,wealth:198500,status:"DEMO"}
+];
+var metric="kills";var killsTab=document.getElementById("killsTab");var wealthTab=document.getElementById("wealthTab");var search=document.getElementById("search");var rows=document.getElementById("rows");var podium=document.getElementById("podium");var header=document.getElementById("metricHeader");var empty=document.getElementById("empty");var toast=document.getElementById("toast");var toastTimer;
+function shortMoney(v){return "¢"+Number(v).toLocaleString("en-US");}
+function sorted(){return demoPlayers.slice().sort(function(a,b){return b[metric]-a[metric];});}
+function avatar(n){return n.slice(0,2).toUpperCase();}
+function render(){
+ var q=search.value.trim().toLowerCase();var all=sorted();var filtered=all.filter(function(p){return p.name.toLowerCase().indexOf(q)!==-1;});header.textContent=metric==="kills"?"Kills":"Wealth";
+ killsTab.setAttribute("aria-selected",String(metric==="kills"));wealthTab.setAttribute("aria-selected",String(metric==="wealth"));
+ podium.innerHTML="";
+ if(!q){all.slice(0,3).forEach(function(p,i){var card=document.createElement("div");card.className="podium-card"+(i===0?" first":"");var medal=["👑","🥈","🥉"][i];var val=metric==="kills"?Number(p.kills).toLocaleString("en-US")+" kills":shortMoney(p.wealth);card.innerHTML='<div class="medal">'+medal+'</div><div class="podium-name"></div><div class="podium-value"></div><div class="podium-rank">RANK #'+(i+1)+'</div>';card.querySelector(".podium-name").textContent=p.name;card.querySelector(".podium-value").textContent=val;podium.appendChild(card);});}
+ rows.innerHTML="";
+ filtered.forEach(function(p){var rank=all.indexOf(p)+1;var tr=document.createElement("tr");var val=metric==="kills"?Number(p.kills).toLocaleString("en-US"):shortMoney(p.wealth);tr.innerHTML='<td class="rank">#'+rank+'</td><td><div class="player"><span class="avatar"></span><span class="player-name"></span></div></td><td class="value '+(metric==="wealth"?"coin":"positive")+'"></td><td><span class="pill">DEMO</span></td>';tr.querySelector(".avatar").textContent=avatar(p.name);tr.querySelector(".player-name").textContent=p.name;tr.querySelector(".value").textContent=val;rows.appendChild(tr);});
+ empty.style.display=filtered.length?"none":"block";document.getElementById("leaderTable").style.display=filtered.length?"table":"none";
+}
+killsTab.addEventListener("click",function(){metric="kills";render();});wealthTab.addEventListener("click",function(){metric="wealth";render();});search.addEventListener("input",render);
+function showToast(message){toast.textContent=message;toast.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(function(){toast.classList.remove("show");},1800);}
+document.querySelectorAll("[data-copy]").forEach(function(btn){btn.addEventListener("click",function(){var value=btn.getAttribute("data-copy");if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(value).then(function(){showToast("Copied: "+value);}).catch(function(){showToast("Copy failed — select the address manually.");});}else{showToast("Select and copy: "+value);}});});
+/* Live mode will be wired to verified server output once the server-side stats bridge is configured. */
+render();
+})();
+</script>
+</body>
+</html>
